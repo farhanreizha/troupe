@@ -3,40 +3,250 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 200 20% 98%;
-    --btn-background: 200 10% 91%;
-    --btn-background-hover: 200 10% 89%;
-    --foreground: 200 50% 3%;
-  }
+	:root {
+		--background: 0 0% 100%;
+		--foreground: 240 10% 3.9%;
 
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background: 200 50% 3%;
-      --btn-background: 200 10% 9%;
-      --btn-background-hover: 200 10% 12%;
-      --foreground: 200 20% 96%;
-    }
-  }
+		--card: 0 0% 100%;
+		--card-foreground: 240 10% 3.9%;
+
+		--popover: 0 0% 100%;
+		--popover-foreground: 240 10% 3.9%;
+
+		--primary: 240 5.9% 10%;
+		--primary-foreground: 0 0% 98%;
+
+		--secondary: 240 4.8% 95.9%;
+		--secondary-foreground: 240 5.9% 10%;
+
+		--muted: 240 4.8% 95.9%;
+		--muted-foreground: 240 3.8% 46.1%;
+
+		--accent: 240 4.8% 95.9%;
+		--accent-foreground: 240 5.9% 10%;
+
+		--destructive: 0 84.2% 60.2%;
+		--destructive-foreground: 0 0% 98%;
+
+		--border: 240 5.9% 90%;
+		--input: 240 5.9% 90%;
+		--ring: 240 10% 3.9%;
+
+		--radius: 0.5rem;
+	}
+
+	.dark {
+		--background: 240 10% 3.9%;
+		--foreground: 0 0% 98%;
+
+		--card: 240 10% 3.9%;
+		--card-foreground: 0 0% 98%;
+
+		--popover: 240 10% 3.9%;
+		--popover-foreground: 0 0% 98%;
+
+		--primary: 0 0% 98%;
+		--primary-foreground: 240 5.9% 10%;
+
+		--secondary: 240 3.7% 15.9%;
+		--secondary-foreground: 0 0% 98%;
+
+		--muted: 240 3.7% 15.9%;
+		--muted-foreground: 240 5% 64.9%;
+
+		--accent: 240 3.7% 15.9%;
+		--accent-foreground: 0 0% 98%;
+
+		--destructive: 0 62.8% 30.6%;
+		--destructive-foreground: 0 0% 98%;
+
+		--border: 240 3.7% 15.9%;
+		--input: 240 3.7% 15.9%;
+		--ring: 240 4.9% 83.9%;
+	}
+	* {
+		@apply border-border;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
 }
 
-@layer base {
-  * {
-    @apply border-foreground/20;
-  }
+@layer utilities {
+	/* TYPOGRAPHY */
+	.h1-bold {
+		@apply text-[36px] font-bold leading-[140%] tracking-tighter;
+	}
+
+	.h1-semibold {
+		@apply text-[36px] font-semibold leading-[140%] tracking-tighter;
+	}
+
+	.h2-bold {
+		@apply text-[30px] font-bold leading-[140%] tracking-tighter;
+	}
+
+	.h3-bold {
+		@apply text-[24px] font-bold leading-[140%] tracking-tighter;
+	}
+
+	.base-semibold {
+		@apply text-[16px] font-semibold leading-[140%] tracking-tighter;
+	}
+
+	.base-medium {
+		@apply text-[16px] font-medium leading-[140%];
+	}
+
+	.base-regular {
+		@apply text-[16px] font-normal leading-[140%];
+	}
+
+	.body-bold {
+		@apply text-[18px] font-bold leading-[140%];
+	}
+
+	.body-medium {
+		@apply text-[18px] font-medium leading-[140%];
+	}
+
+	.small-semibold {
+		@apply text-[14px] font-semibold leading-[140%] tracking-tighter;
+	}
+
+	.small-medium {
+		@apply text-[14px] font-medium leading-[140%];
+	}
+
+	.small-regular {
+		@apply text-[14px] font-normal leading-[140%];
+	}
+
+	.subtle-semibold {
+		@apply text-[12px] font-semibold leading-[140%];
+	}
+
+	.tiny-medium {
+		@apply text-[10px] font-medium leading-[140%];
+	}
+
+	/* UTILITIES */
+	.invert-white {
+		@apply invert brightness-0 transition;
+	}
+
+	.flex-center {
+		@apply flex justify-center items-center;
+	}
+
+	.flex-between {
+		@apply flex justify-between items-center;
+	}
+
+	.flex-start {
+		@apply flex justify-start items-center;
+	}
+
+	.custom-scrollbar::-webkit-scrollbar {
+		width: 3px;
+		height: 3px;
+		border-radius: 2px;
+		-webkit-border-radius: 2px;
+		-moz-border-radius: 2px;
+		-ms-border-radius: 2px;
+		-o-border-radius: 2px;
+	}
+
+	.custom-scrollbar::-webkit-scrollbar-track {
+		background: #09090a;
+	}
+
+	.custom-scrollbar::-webkit-scrollbar-thumb {
+		background: #5c5c7b;
+		border-radius: 50px;
+		-webkit-border-radius: 50px;
+		-moz-border-radius: 50px;
+		-ms-border-radius: 50px;
+		-o-border-radius: 50px;
+	}
+
+	.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+		background: #7878a3;
+	}
+
+	.common-container {
+		@apply flex flex-col flex-1 items-center gap-10 overflow-scroll py-10 px-5 md:px-8 lg:p-14 custom-scrollbar;
+	}
+
+	/* MAIN LAYOUT */
+	.button-create_server {
+		@apply flex mx-3 h-[48px] w-[48px] rounded-[24px] group-hover:rounded-[16px] transition-all overflow-hidden items-center justify-center bg-background group-hover:bg-emerald-500;
+	}
+	/* SIDEBAR */
+	.sidebar {
+		@apply hidden md:flex h-full w-[72px] z-30 flex-col fixed inset-y-0;
+	}
+
+	/* NAVIGATION */
+	.nav-container {
+		@apply space-y-4 flex flex-col items-center h-full text-primary w-full bg-primary/10 py-3;
+	}
+
+	.nav-server_icon {
+		@apply relative flex mx-3 h-[48px] w-[48px] rounded-[24px];
+	}
+
+	/* SERVER */
+	.server-sidebar {
+		@apply hidden md:flex h-full w-60 z-20 flex-col fixed inset-y-0;
+	}
+
+	.server-header-dropdown_trigger {
+		@apply w-full font-semibold px-3 h-12 border-b-2 hover:bg-background/60 transition;
+	}
+
+	.server-header-dropdown_content {
+		@apply w-56 text-xs font-medium space-y-2;
+	}
+
+	/* COMPONENTS */
+	.chat-button_plus {
+		@apply absolute transition top-7 left-8 h-[24px] w-[24px] rounded-full p-1 flex-center bg-foreground/20 hover:bg-foreground/30;
+	}
 }
 
-.animate-in {
-  animation: animateIn 0.3s ease 0.15s both;
-}
+@layer components {
+	/* Form */
+	.shad-form_label {
+		@apply text-white !important;
+	}
 
-@keyframes animateIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	.shad-form_message {
+		@apply text-red !important;
+	}
+
+	.shad-input {
+		@apply bg-background border-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:ring-0 focus:ring-offset-0 !important;
+	}
+
+	.shad-textarea {
+		@apply h-36 bg-background rounded-xl border-none focus-visible:ring-1 focus-visible:ring-offset-1 !important;
+	}
+
+	/* Button */
+	.shad-button_primary {
+		@apply bg-background hover:bg-primary-500 text-light-1 flex gap-2 !important;
+	}
+
+	.shad-button_dark_4 {
+		@apply h-12 bg-background px-5 text-light-1 flex gap-2 !important;
+	}
+
+	.shad-button_ghost {
+		@apply flex gap-4 items-center justify-center hover:bg-transparent hover:text-primary !important;
+	}
+
+	/* .search {
+		@apply border-b border-dark-4 py-2 px-6 bg-dark-1 focus:ring-0 focus:border-b focus:border-dark-4 focus:outline-none !important;
+	} */
 }
