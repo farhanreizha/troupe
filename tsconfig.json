@@ -17,10 +17,10 @@
 		"plugins": [{ "name": "next" }],
 		"baseUrl": "./",
 		"paths": {
-			"components/*": ["components/*"],
-			"hooks/*": ["hooks/*"],
-			"lib/*": ["lib/*"],
-			"app/*": ["app/*"]
+			"@components/*": ["components/*"],
+			"@hooks/*": ["hooks/*"],
+			"@lib/*": ["lib/*"],
+			"@app/*": ["app/*"]
 		}
 	},
 	"include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
