@@ -12,21 +12,20 @@ datasource db {
 
 model Profile {
   id          String @id @default(uuid())
-  userId      String @unique
   username    String @unique
   displayName String
   imageUrl    String @db.Text
-  email       String @db.Text
+  email       String @unique
 
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 }
 
 model Server {
   id String @id @default(uuid())
 
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 }
 
 enum MemberRole {
@@ -39,7 +38,7 @@ model Member {
   id String @id @default(uuid())
 
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 }
 
 enum ChannelType {
@@ -52,26 +51,26 @@ model Channel {
   id String @id @default(uuid())
 
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 }
 
 model Message {
   id String @id @default(uuid())
 
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 }
 
 model Conversation {
   id String @id @default(uuid())
 
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 }
 
 model DirectMessage {
   id String @id @default(uuid())
 
   createdAt DateTime @default(now())
-  updatedAt DateTime
+  updatedAt DateTime @updatedAt
 }
