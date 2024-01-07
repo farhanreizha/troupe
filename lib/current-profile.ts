@@ -1,9 +1,9 @@
 "use server";
-import serverCreateClient from "./supabase/server";
+import { serverCreateClient } from "./supabase/server";
 import { cookies } from "next/headers";
 import { db } from "./db";
 
-export async function currentProfile() {
+export const currentProfile = async () => {
   const supabase = await serverCreateClient(cookies());
   const { data } = await supabase.auth.getUser();
 
@@ -14,4 +14,4 @@ export async function currentProfile() {
   });
 
   return profile;
-}
+};

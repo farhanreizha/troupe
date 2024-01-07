@@ -1,7 +1,7 @@
 "use client";
 
 import { useSetting } from "@/hooks/useSetting";
-import createClient from "@/lib/supabase/client";
+import { createClient } from "@/lib/supabase/client";
 import { Profile } from "@prisma/client";
 import { useRouter } from "next/navigation";
 import {
@@ -17,7 +17,7 @@ interface UserButtonProps {
   profile: Profile;
 }
 
-export default function UserButton({ profile }: UserButtonProps) {
+const UserButton: React.FC<UserButtonProps> = ({ profile }) => {
   const supabase = createClient();
   const { onOpen } = useSetting();
   const router = useRouter();
@@ -52,4 +52,6 @@ export default function UserButton({ profile }: UserButtonProps) {
       </DropdownMenuContent>
     </DropdownMenu>
   );
-}
+};
+
+export default UserButton;

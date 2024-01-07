@@ -30,7 +30,7 @@ import FileUpload from "@/components/file-upload";
 import { Loader2 } from "lucide-react";
 import { CreateServerSchema } from "@/lib/schemas";
 
-export default function InitialModal() {
+const InitialModal = () => {
   const [isMounted, setIsMounted] = useState(false);
   const router = useRouter();
 
@@ -59,7 +59,7 @@ export default function InitialModal() {
         toast(error.response.data, {
           unstyled: true,
           className: "toast-error",
-        }),
+        })
       );
   };
 
@@ -71,7 +71,7 @@ export default function InitialModal() {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="p-0 overflow-hidden">
+      <DialogContent className="p-0 overflow-hidden border-none bg-card">
         <DialogHeader className="pt-8 px-6 pb-4">
           <DialogTitle className="h3-bold text-center">
             Customize your server
@@ -99,7 +99,8 @@ export default function InitialModal() {
                       </FormControl>
                     </FormItem>
                   )}
-                ></FormField>
+                >
+                </FormField>
               </div>
 
               <FormField
@@ -127,7 +128,7 @@ export default function InitialModal() {
               <Button disabled={isLoading}>
                 Create
                 {isLoading && (
-                  <Loader2 className="animate-spin h-4 w-4 text-foreground/70" />
+                  <Loader2 className="animate-spin h-4 w-4 text-foreground/70 ml-2" />
                 )}
               </Button>
             </DialogFooter>
@@ -136,4 +137,6 @@ export default function InitialModal() {
       </DialogContent>
     </Dialog>
   );
-}
+};
+
+export default InitialModal;

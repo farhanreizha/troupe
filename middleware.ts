@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import middlewareCreateClient from "./lib/supabase/middleware";
+import { middlewareCreateClient } from "./lib/supabase/middleware";
 
 export async function middleware(request: NextRequest) {
   try {
-    const { supabase, response } = middlewareCreateClient(request);
-    const { data } = await supabase.auth.getSession();
+    const { supabase, response } = await middlewareCreateClient(request);
+    await supabase.auth.getSession();
     // console.log(data);
 
     return response;

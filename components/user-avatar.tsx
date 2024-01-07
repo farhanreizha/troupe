@@ -7,11 +7,11 @@ interface UserAvatarProps {
   className?: string;
   username?: string;
 }
-export default function UserAvatar({
+const UserAvatar: React.FC<UserAvatarProps> = ({
   src,
   className,
   username,
-}: UserAvatarProps) {
+}) => {
   const name = splitUsername(username as string);
 
   return (
@@ -20,4 +20,6 @@ export default function UserAvatar({
       <AvatarFallback className="capitalize">{name}</AvatarFallback>
     </Avatar>
   );
-}
+};
+
+export default UserAvatar;

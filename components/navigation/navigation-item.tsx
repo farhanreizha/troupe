@@ -12,11 +12,11 @@ interface NavigationItemProps {
   name: string;
 }
 
-export default function NavigationItem({
+const NavigationItem: React.FC<NavigationItemProps> = ({
   id,
   imageUrl,
   name,
-}: NavigationItemProps) {
+}) => {
   const params = useParams();
   const router = useRouter();
 
@@ -41,7 +41,7 @@ export default function NavigationItem({
           className={cn(
             "nav-server_icon group group-hover:rounded-[16px] transition-all overflow-hidden",
             params?.serverId === id &&
-              "bg-foreground/10 text-foreground rounded-[16px]",
+            "bg-foreground/10 text-foreground rounded-[16px]",
           )}
         >
           <Image
@@ -56,4 +56,5 @@ export default function NavigationItem({
       </button>
     </ActionTooltip>
   );
-}
+};
+export default NavigationItem;

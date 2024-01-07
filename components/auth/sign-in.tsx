@@ -27,7 +27,7 @@ import { Input } from "@/components/ui/input";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
-export default function SignIn() {
+const SignIn = () => {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof SignInSchema>>({
@@ -41,7 +41,7 @@ export default function SignIn() {
       toast.error(error.response.data, {
         unstyled: true,
         className: "toaster-error",
-      }),
+      })
     );
 
     form.reset();
@@ -49,7 +49,7 @@ export default function SignIn() {
   };
 
   return (
-    <Card className="w-[420px]">
+    <Card className="w-[420px] border-none">
       <CardHeader className="flex justify-center items-center">
         <CardTitle className="capitalize">sign in with your account</CardTitle>
         <CardDescription>
@@ -103,9 +103,9 @@ export default function SignIn() {
             />
             <div className="flex w-full justify-end">
               <Button type="submit" disabled={isLoading}>
-                sign in
+                <span>sign in</span>
                 {isLoading && (
-                  <Loader2 className="animate-spin h-4 w-4 text-foreground/70" />
+                  <Loader2 className="animate-spin h-4 w-4 text-foreground/70 ml-2" />
                 )}
               </Button>
             </div>
@@ -114,4 +114,6 @@ export default function SignIn() {
       </CardContent>
     </Card>
   );
-}
+};
+
+export default SignIn;

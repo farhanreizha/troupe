@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import serverCreateClient from "@/lib/supabase/server";
+import { serverCreateClient } from "@/lib/supabase/server";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -10,8 +10,9 @@ export async function POST(request: Request) {
 
     const existEmail = await db.profile.findUnique({ where: { email } });
 
-    if (!existEmail)
+    if (!existEmail) {
       return new NextResponse("Email not exist", { status: 404 });
+    }
 
     const { error } = await supabase.auth.signInWithPassword({
       email,

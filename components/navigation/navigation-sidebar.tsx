@@ -8,7 +8,7 @@ import { db } from "@/lib/db";
 import UserButton from "../user-button";
 import { redirect } from "next/navigation";
 
-export default async function NavigationSidebar() {
+const NavigationSidebar = async () => {
   const profile = await currentProfile();
   if (!profile) return redirect("/");
   const servers = await db.server.findMany({
@@ -36,3 +36,4 @@ export default async function NavigationSidebar() {
     </div>
   );
 }
+export default NavigationSidebar;

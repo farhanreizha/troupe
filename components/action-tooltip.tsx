@@ -2,9 +2,9 @@
 
 import {
   Tooltip,
+  TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-  TooltipContent,
 } from "./ui/tooltip";
 
 interface ActionTooltipProps {
@@ -14,12 +14,12 @@ interface ActionTooltipProps {
   align?: "start" | "center" | "end";
 }
 
-export default function ActionTooltip({
+const ActionTooltip: React.FC<ActionTooltipProps> = ({
   children,
   label,
   align,
   side = "right",
-}: ActionTooltipProps) {
+}) => {
   return (
     <TooltipProvider>
       <Tooltip delayDuration={50}>
@@ -30,4 +30,6 @@ export default function ActionTooltip({
       </Tooltip>
     </TooltipProvider>
   );
-}
+};
+
+export default ActionTooltip;
